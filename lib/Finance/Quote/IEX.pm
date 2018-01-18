@@ -51,7 +51,7 @@ sub iex {
     my $quoter = shift;
     my @stocks = @_;
 
-    my $iex_url = 'https://api.iextrading.com/1.0/stock/%s/quote';
+    my $iex_url  = 'https://api.iextrading.com/1.0/stock/%s/quote';
     my $errormsg = 'Error retrieving quote for "%s": GET "%s" resulted in'
         . ' HTTP response %d (%s)';
 
@@ -59,10 +59,10 @@ sub iex {
     my %info;
 
     foreach my $symbol (@stocks) {
-        my $url   = sprintf( $iex_url, $symbol );
+        my $url = sprintf( $iex_url, $symbol );
         my $response = $ua->get($url);
 
-        if (!$response->is_success) {
+        if ( !$response->is_success ) {
             my $code = $response->code;
             my $desc = status_message($code);
             $info{ $symbol, 'success' } = 0;
@@ -93,9 +93,10 @@ sub iex {
         $info{ $symbol, 'cap' }      = $data->{marketCap};
         $info{ $symbol, 'exchange' } = $data->{exchange};
 
-        # The Finance::Quote documentation indicates that the date shouldn't be
-        # parsed, but store_date does not support epoch time.
-        my $dt = DateTime->from_epoch( epoch => $data->{latestUpdate} / 1000 );
+        # The Finance::Quote documentation indicates that the date shouldn't
+        # be parsed, but store_date does not support epoch time.
+        my $dt
+            = DateTime->from_epoch( epoch => $data->{latestUpdate} / 1000 );
         $info{ $symbol, 'time' }    = $dt->hms;
         $info{ $symbol, 'date' }    = $dt->strftime('%m/%d/%y');
         $info{ $symbol, 'isodate' } = $dt->ymd;
