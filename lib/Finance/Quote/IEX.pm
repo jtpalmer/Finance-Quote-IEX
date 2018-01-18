@@ -73,6 +73,30 @@ sub iex {
 
         my $data = decode_json( $response->decoded_content );
 
+        if ( !defined $data->{latestPrice} ) {
+            my $code = $response->code;
+            my $desc = status_message($code);
+            $info{ $symbol, 'success' }  = 0;
+            $info{ $symbol, 'errormsg' } = sprintf(
+                'Error retrieving quote for "%s":'
+                    . ' no price found in response data',
+                $symbol
+            );
+            next;
+        }
+
+        if ( !defined $data->{latestUpdate} ) {
+            my $code = $response->code;
+            my $desc = status_message($code);
+            $info{ $symbol, 'success' }  = 0;
+            $info{ $symbol, 'errormsg' } = sprintf(
+                'Error retrieving quote for "%s":'
+                    . ' no date found in response data',
+                $symbol
+            );
+            next;
+        }
+
         $info{ $symbol, 'success' }  = 1;
         $info{ $symbol, 'method' }   = 'iex';
         $info{ $symbol, 'source' }   = 'Finance::Quote::IEX';
