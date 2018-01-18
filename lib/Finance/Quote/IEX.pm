@@ -95,7 +95,7 @@ sub iex {
 
         # The Finance::Quote documentation indicates that the date shouldn't be
         # parsed, but store_date does not support epoch time.
-        my $dt = DateTime->from_epoch( epoch => $data->{latestUpdate} );
+        my $dt = DateTime->from_epoch( epoch => $data->{latestUpdate} / 1000 );
         $info{ $symbol, 'time' }    = $dt->hms;
         $info{ $symbol, 'date' }    = $dt->strftime('%m/%d/%y');
         $info{ $symbol, 'isodate' } = $dt->ymd;
