@@ -4,7 +4,7 @@ Finance::Quote::IEX - (DEPRECATED) Retrieve stock quotes using the IEX API
 
 # VERSION
 
-version 0.001002
+version 0.002000
 
 # SYNOPSIS
 
