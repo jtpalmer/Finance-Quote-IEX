@@ -1,6 +1,6 @@
 # NAME
 
-Finance::Quote::IEX - Retrieve stock quotes using the IEX API
+Finance::Quote::IEX - (DEPRECATED) Retrieve stock quotes using the IEX API
 
 # VERSION
 
@@ -21,6 +21,12 @@ must be loaded explicitly by placing `'IEX'` in the argument list to
 `Finance::Quote->new()`.
 
 This module provides the `iex` fetch method.
+
+# DEPRECATED
+
+**This module is deprecated. Use [Finance::Quote::IEXCloud](https://metacpan.org/pod/Finance::Quote::IEXCloud) instead.**
+
+**The IEX API removed all non-IEX data in June 2019.**
 
 # ATTRIBUTION
 
@@ -43,6 +49,7 @@ and price.
 # SEE ALSO
 
 - [Finance::Quote](https://metacpan.org/pod/Finance::Quote)
+- [Finance::Quote::IEXCloud](https://metacpan.org/pod/Finance::Quote::IEXCloud)
 - [https://iextrading.com/developer/docs/](https://iextrading.com/developer/docs/)
 
 # AUTHOR
@@ -51,7 +58,7 @@ Jeffrey T. Palmer <jtpalmer@cpan.org>
 
 # COPYRIGHT AND LICENSE
 
-This software is Copyright (c) 2018 by Jeffrey T. Palmer.
+This software is Copyright (c) 2019 by Jeffrey T. Palmer.
 
 This is free software, licensed under:
 

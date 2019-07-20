@@ -1,6 +1,7 @@
 Revision history for Finance-Quote-IEX
 
 {{$NEXT}}
+    - Deprecated module
 
 0.001001 2018-01-18
     - Fix date parsing

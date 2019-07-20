@@ -1,12 +1,15 @@
 package Finance::Quote::IEX;
 
-# ABSTRACT: Retrieve stock quotes using the IEX API
+# ABSTRACT: (DEPRECATED) Retrieve stock quotes using the IEX API
 
 use strict;
 use warnings;
 use DateTime;
 use JSON qw(decode_json);
 use HTTP::Status qw(status_message);
+
+warnings::warnif( 'deprecated',
+    'Finance::Quote::IEX is deprecated and should no longer be used' );
 
 # VERSION
 
@@ -135,6 +138,12 @@ __END__
 
 =pod
 
+=head1 DEPRECATED
+
+B<This module is deprecated. Use L<Finance::Quote::IEXCloud> instead.>
+
+B<The IEX API removed all non-IEX data in June 2019.>
+
 =head1 SYNOPSIS
 
     use Finance::Quote;
@@ -183,6 +192,8 @@ and price.
 =over 4
 
 =item * L<Finance::Quote>
+
+=item * L<Finance::Quote::IEXCloud>
 
 =item * L<https://iextrading.com/developer/docs/>
 
